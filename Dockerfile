@@ -1,8 +1,8 @@
 # Use Node.js LTS as base image
-FROM node:lts-buster
+FROM quay.io/ayanokojix2306/kojixsophia:latest
 
 # Clone the repository
-RUN git clone https://github.com/SuhailTechInfo/suhailmd-2.0 /home/suhail
+RUN git clone https://github.com/ayanokojix-1/SOPHIA-MD /home/suhail
 
 # Set ownership for the 'node' user
 RUN chown -R node:node /home/suhail
