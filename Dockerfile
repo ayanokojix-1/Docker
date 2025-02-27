@@ -2,7 +2,7 @@
 FROM quay.io/ayanokojix2306/kojixsophia:latest
 
 # Clone the repository
-RUN git clone https://github.com/ayanokojix-1/SOPHIA-MD /home/suhail
+RUN git clone https://github.com/A-Y-A-N-O-K-O-J-I/SOPHIA-MD /home/suhail
 
 # Set ownership for the 'node' user
 RUN chown -R node:node /home/suhail
