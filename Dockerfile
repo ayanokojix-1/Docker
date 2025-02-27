@@ -19,8 +19,6 @@ COPY server.js .
 # Install dependencies
 RUN npm install
 
-# Expose the port
-EXPOSE 8000
 
 # Start both server.js and the main application
 CMD ["sh", "-c", "node server.js & npm start"]
