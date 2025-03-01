@@ -21,4 +21,4 @@ RUN npm install
 
 
 # Start both server.js and the main application
-CMD ["sh", "-c", "node server.js & npm start"]
+CMD ["npm", "start"]
