@@ -1,24 +1,20 @@
-# Use Node.js LTS as base image
-FROM quay.io/ayanokojix2306/kojixsophia:latest
+# 1️⃣ Use an official Python image as base
+FROM python:3.11-slim
 
-# Clone the repository
-RUN git clone https://github.com/A-Y-A-N-O-K-O-J-I/SOPHIA-MD /home/suhail
+# 2️⃣ Set working directory inside container
+WORKDIR /app
 
-# Set ownership for the 'node' user
-RUN chown -R node:node /home/suhail
+# 🧩 Install git
+RUN apt-get update && apt-get install -y git && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
-# Switch to the 'node' user
-USER node
+# 3️⃣ Clone the repo
+RUN git clone https://github.com/A-Y-A-N-O-K-O-J-I/DND-API /app
 
-# Set the working directory
-WORKDIR /home/suhail
+# 4️⃣ Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the server.js file (background webpage script)
-COPY server.js .
+# 5️⃣ Expose port
+EXPOSE 7860
 
-# Install dependencies
-RUN npm install
-
-
-# Start both server.js and the main application
-CMD ["sh", "-c", "node server.js & npm start"]
+# 6️⃣ Run app
+CMD ["python", "app.py"]
